@@ -2,5 +2,5 @@ import 'package:flutter/material.dart';
 import 'src/app.dart';
 
 void main() {
-  runApp(const MyApp(title: 'Flutter Demo Home Page'));
+  runApp(const MyApp(title: 'Trabalhando com Provider'));
 }

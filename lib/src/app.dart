@@ -1,9 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'core/ui/theme/app_theme.dart';
 import 'core/utls/app_routes.dart';
+import 'models/user_model.dart';
 import 'pages/home/home_page.dart';
+import 'pages/with_provider/with_provider_page.dart';
 
 
 
@@ -21,32 +24,41 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Vamos Cozinhar?',
-      theme: MyAppTheme.themeData,
-      initialRoute: AppRoutes.home,
-      routes: {
-        AppRoutes.home: (ctx) => HomePageApp(title: widget.title),
-      },
-
-      onGenerateRoute: (settings) {
-        if (settings.name == '/alguma-coisa') {
-          return null;
-        } else if (settings.name == '/outra-coisa') {
-          return null;
-        } else {
+    return Provider(
+      create: (_) => const UserModel(
+        name: 'Zoe Saldana',
+        email: 'user2023@gmail.com',
+        imgAvatar: 'https://i.pravatar.cc/300',
+        birthday: '01/01/2023',   
+      ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'My APP',
+        theme: MyAppTheme.themeData,
+        initialRoute: AppRoutes.home,
+        routes: {
+          AppRoutes.home: (ctx) => HomePageApp(title: widget.title),
+          'provider': (ctx) => const WithProviderPage(),
+        },
+    
+        onGenerateRoute: (settings) {
+          if (settings.name == '/alguma-coisa') {
+            return null;
+          } else if (settings.name == '/outra-coisa') {
+            return null;
+          } else {
+            return MaterialPageRoute(builder: (_) {
+              return HomePageApp(title: widget.title);
+            });
+          }
+        },
+        // funciona tipo fosse uma página 404
+        onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (_) {
             return HomePageApp(title: widget.title);
           });
-        }
-      },
-      // funciona tipo fosse uma página 404
-      onUnknownRoute: (settings) {
-        return MaterialPageRoute(builder: (_) {
-          return HomePageApp(title: widget.title);
-        });
-      },
+        },
+      ),
     );
   }
 }
