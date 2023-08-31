@@ -74,7 +74,7 @@ class _WithChangerNotifierPageState extends State<WithChangerNotifierPage> {
                       selector: (context, controller) => Tuple2(controller.email, controller.name),
                       // shouldRebuild: (previous, next) => previous != next,
                       builder: (context, tuple, child) {
-                        print('controller.birthday');
+                        //   print('controller.birthday');
                         return Text(
                           '(${tuple.item1} - ${tuple.item2})',
                           style: const TextStyle(fontSize: 16),
