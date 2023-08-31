@@ -42,7 +42,9 @@ class _TabsScreenState extends State<HomePageApp> {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'changer-notifier');
+                  },
                   child: const Text('Change Notifier'),
                 ),
               ],
