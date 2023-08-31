@@ -8,8 +8,6 @@ import 'models/user_model.dart';
 import 'pages/home/home_page.dart';
 import 'pages/with_provider/with_provider_page.dart';
 
-
-
 class MyApp extends StatefulWidget {
   final String title;
   const MyApp({
@@ -28,8 +26,9 @@ class _MyAppState extends State<MyApp> {
       create: (_) => const UserModel(
         name: 'Zoe Saldana',
         email: 'user2023@gmail.com',
-        imgAvatar: 'https://i.pravatar.cc/300',
-        birthday: '01/01/2023',   
+        // imgAvatar: 'https://i.pravatar.cc/300',
+        imgAvatar: 'https://yt3.googleusercontent.com/rY0nqXPcrDPkbmxVZk0ZjoZRCWIZjBY7Q2XsBzvr6Ca9WvCa4Z28yupewm-rHqiu3w6GVficDQ=s900-c-k-c0x00ffffff-no-rj',
+        birthday: '01/01/2023',
       ),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -40,7 +39,7 @@ class _MyAppState extends State<MyApp> {
           AppRoutes.home: (ctx) => HomePageApp(title: widget.title),
           'provider': (ctx) => const WithProviderPage(),
         },
-    
+
         onGenerateRoute: (settings) {
           if (settings.name == '/alguma-coisa') {
             return null;
